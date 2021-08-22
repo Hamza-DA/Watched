@@ -1,11 +1,17 @@
+const tailwindcss = require('tailwindcss');
+
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    backgroundColor: (theme) => ({
+      ...theme('colors'),
+      primary: '#1d1d1d',
+      nav: '#1b191c',
+    }),
   },
   variants: {
-    extend: {},
+    extend: { width: ['responsive', 'hover', 'focus'] },
   },
-  plugins: [],
-}
+  plugins: [require('tailwindcss-scroll-snap')],
+};
