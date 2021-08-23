@@ -1,13 +1,14 @@
 import { BookmarkIcon, TrashIcon } from '@heroicons/react/outline';
 import { useEffect, useState } from 'react';
-export default function AddBookmark({ props }) {
+export default function SaveForLater({ props }) {
   const [BookMarks, setBookMarks] = useState([]);
   const saveToLocalStorage = (movies) => {
     localStorage.setItem('BookMark', JSON.stringify(movies));
   };
   const deleteFromLocalStorage = () => {
-    const newArray = BookMarks.splice(BookMarks.indexOf(props), 1);
-    localStorage.removeItem('BookMark', JSON.stringify(newArray));
+    const newArray = BookMarks.filter((movie) => movie.id !== props.id);
+    localStorage.setItem('BookMark', JSON.stringify(newArray));
+    setBookMarks(newArray);
   };
   const addToBookmark = () => {
     const newBookMarkList = [...(BookMarks || ''), props];
@@ -17,7 +18,7 @@ export default function AddBookmark({ props }) {
   useEffect(() => {
     const retrieveFromLS = JSON.parse(localStorage.getItem('BookMark'));
     setBookMarks(retrieveFromLS);
-  }, [deleteFromLocalStorage, saveToLocalStorage]);
+  }, []);
   return (
     <>
       {(localStorage.getItem('BookMark') &&
@@ -26,8 +27,8 @@ export default function AddBookmark({ props }) {
         ) !== undefined) ||
       null ? (
         <button
-          onClick={() => deleteFromLocalStorage(props)}
-          className='hover:bg-red-500 mr-3 flex mt-4 items-center bg-white text-gray-900 hover:text-gray-50 rounded-xl text-lg font-medium px-5 py-3 '
+          onClick={() => deleteFromLocalStorage()}
+          className='bg-red-500 mr-3 flex mt-4 items-center text-white rounded-xl text-lg font-medium px-5 py-3 '
         >
           <span className='flex items-center'>
             <TrashIcon className='h-6 w-6 mr-2 -ml-1' />

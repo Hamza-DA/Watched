@@ -33,12 +33,11 @@ export default function UserPage() {
           {Movies && (
             <>
               <H2 content='You saved' />
-              <div className='ml-32 flex'>
-                {Movies !== undefined ||
-                  (null &&
-                    Movies.map((e) => {
-                      return <MoviePoster props={e} />;
-                    }))}
+              <div className='ml-32 flex overflow-x-auto'>
+                {Movies &&
+                  Movies.map((e) => {
+                    return <MoviePoster props={e} />;
+                  })}
 
                 {Movies.length == 1 && <MoviePoster props={Movies[0]} />}
               </div>

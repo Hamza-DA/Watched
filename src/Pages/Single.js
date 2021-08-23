@@ -8,8 +8,9 @@ import Cast from '../Component/Cast';
 import axios from 'axios';
 import FamilyShield from '../Component/FamilyShield';
 import Crew from '../Component/Crew';
-import AddBookmark from '../Component/AddBookmark';
+import SaveForLater from '../Component/SaveForLater';
 import api_key from '../Component/api_key.json';
+import AddToWatched from '../Component/AddToWatched';
 
 function Single({ match }) {
   const [Match, setMatch] = useState(match.params.id);
@@ -74,12 +75,8 @@ function Single({ match }) {
               {Movie.overview}
             </p>
             <div className='flex flex-col items-start sm:flex-row'>
-              <AddBookmark props={Movie} />
-
-              <button className='mr-3 flex mt-4 items-center bg-transparent text-white rounded-xl text-lg font-medium px-5 py-3 '>
-                <CheckCircleIcon className='h-6 w-6 mr-2 -ml-1' /> Add to
-                watched
-              </button>
+              <SaveForLater props={Movie} />
+              <AddToWatched props={Movie} />
             </div>
           </div>
         </div>

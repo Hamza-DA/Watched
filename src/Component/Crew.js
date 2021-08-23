@@ -32,7 +32,7 @@ export default function Crew({ id }) {
               src={
                 e.profile_path == undefined || null
                   ? user
-                  : `https://image.tmdb.org/t/p/original${e.profile_path}`
+                  : `https://image.tmdb.org/t/p/w500${e.profile_path}`
               }
               alt={e.name}
             />
@@ -51,12 +51,14 @@ export default function Crew({ id }) {
   };
   return (
     <>
-      <div className='bg-primary py-9'>
-        <H2 content='Crew' />
-        <div className='grid grid-flow-col sm:grid-cols-3 grid-col-1 auto-rows-auto gap-y-4 sm:gap-y-8 mx-6 sm:ml-32 overflow-x-auto'>
-          {crewFiltering()}
+      {Crew !== null && (
+        <div className='bg-primary py-9'>
+          <H2 content='Crew' />
+          <div className='grid grid-cols-3 auto-rows-auto gap-y-4 sm:gap-y-8 mx-6 sm:ml-32 overflow-x-auto'>
+            {crewFiltering()}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
