@@ -1,4 +1,4 @@
-import user from '../project resources/user.png';
+import user from '../resources/user.png';
 function CastCard({ props }) {
   return (
     <>

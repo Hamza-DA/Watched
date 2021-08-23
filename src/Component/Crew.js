@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CastCard from './CastCard';
 import H2 from './h2Title';
-import user from '../project resources/user.png';
+import user from '../resources/user.png';
 import api_key from './api_key.json';
 
 export default function Crew({ id }) {

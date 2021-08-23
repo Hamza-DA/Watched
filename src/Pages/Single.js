@@ -9,7 +9,7 @@ import axios from 'axios';
 import FamilyShield from '../Component/FamilyShield';
 import Crew from '../Component/Crew';
 import AddBookmark from '../Component/AddBookmark';
-import api_key from '../key.json';
+import api_key from '../Component/api_key.json';
 
 function Single({ match }) {
   const [Match, setMatch] = useState(match.params.id);

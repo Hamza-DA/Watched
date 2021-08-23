@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import MoviePoster from '../Component/MoviePoster';
 import movieGenres from '../Component/prototypeJSON/movieGenres.json';
-import api_key from '../key.json';
+import api_key from '../Component/api_key.json';
 
 function SearchPage() {
   const [Search, setSearch] = useState([]);

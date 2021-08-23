@@ -1,4 +1,4 @@
-import Logo from '../project resources/logo.png';
+import Logo from '../resources/logo.png';
 import {
   HomeIcon,
   UserCircleIcon,

@@ -1,7 +1,7 @@
 import RatingComponent from './RatingComponent';
 import GenreRender from './Genre';
 import { Link } from 'react-router-dom';
-import user from '../project resources/user.png';
+import user from '../resources/user.png';
 
 function MoviePoster({ props, w_h }) {
   return (

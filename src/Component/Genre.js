@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import movieGenres from './movieGenres.json';
 
 function GenreRender({ genresProps }) {
@@ -26,9 +26,10 @@ function GenreRender({ genresProps }) {
   };
   return (
     <>
+      {console.log(movieGenres)}
       {genresProps != undefined ? (
         <span className='text-gray-100 text-base font-normal tracking-wide mr-2 flex-shrink-0 flex flex-wrap'>
-          {Reders()}
+          {/* {Reders()} */}
         </span>
       ) : (
         console.log('genresProps is undefined')
