@@ -1,2 +1,2 @@
 #Watched
-![Watched Thumbnail](./src/project resources/watchedThumb.png)
+![Watched Thumbnail](src/project resources/watchedThumb.png)
