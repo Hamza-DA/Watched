@@ -1,6 +1,6 @@
 # Watched
 
-![Watched](src/resources\watchedThumb.png)
+![Watched](src/resources/watchedThumb.png)
 
 Watched is a project I am working on, made by react, tailwindcss, [TMDB](www.themoviedb.org) api.
 In this app, you can search a film, read a small breif about it, see te cast by their character in the film, add it to your wishlist if you have not watched it yet, or simply add it to your favourites.
