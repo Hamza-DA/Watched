@@ -10,7 +10,7 @@ function HeroSection() {
   const [Trend, setTrend] = useState([]);
   let FetchHero = async () => {
     const api = await fetch(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key.key}`
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${api_key.key}`
     );
     const response = await api.json();
     setTrend(response.results[0]);

@@ -12,7 +12,7 @@ import { Link, NavLink } from 'react-router-dom';
 function Navbar() {
   return (
     <>
-      <nav className='fixed left-0 flex justify-evenly z-10 h-screen w-16 pl-5 group hover:w-40 transition-all duration-75 bg-opacity-50 backdrop-blur bg-black items-start flex-col'>
+      <nav className='fixed left-0 flex justify-evenly z-10 h-screen w-16 pl-5 group hover:w-40 transition-all duration-75 bg-opacity-50 hover:bg-opacity-95 backdrop-blur bg-black items-start flex-col'>
         <img src={Logo} alt='Watched' />
         <ul className='text-gray-400 items-center justify-around'>
           <li className='mt-20 relative'>

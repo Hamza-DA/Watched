@@ -26,7 +26,6 @@ function GenreRender({ genresProps }) {
   };
   return (
     <>
-      {console.log(movieGenres)}
       {genresProps != undefined ? (
         <span className='text-gray-100 text-base font-normal tracking-wide mr-2 flex-shrink-0 flex flex-wrap'>
           {/* {Reders()} */}
