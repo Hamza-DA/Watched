@@ -29,9 +29,9 @@ export default function SelectGenres() {
   }, []);
   return (
     <>
-      <section className='bg-primary pr-32  py-9'>
+      <section className='bg-primary sm:pr-32  py-9'>
         <H2 content='Select movie genre you like' />
-        <div className='ml-32 flex flex-wrap'>
+        <div className='sm:ml-32 mx-6 flex flex-wrap'>
           {movieGenres.genres.map((genre) => {
             return (
               <button

@@ -21,7 +21,6 @@ function PopularMovies({ type, title, similar, movie_id }) {
       )
       .then((res) => {
         setPopular(res.data.results);
-        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -59,7 +58,7 @@ function PopularMovies({ type, title, similar, movie_id }) {
           {/* <div className='z-10 pointer-events-none absolute right-0 w-40 flex items-center justify-center bg-gradient-to-l h-full from-black to-transparent'>
             <ChevronRightIcon className='h-8 w-8 text-white' />
           </div> */}
-          <div className='mx-6 sm:ml-32  flex relative overflow-x-auto overflow-visible'>
+          <div className='pl-6 sm:ml-32 relative overflow-x-auto overflow-visible flex items-end'>
             {MoviesArray()}
           </div>
         </div>

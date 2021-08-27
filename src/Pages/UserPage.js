@@ -4,14 +4,13 @@ import H2 from '../Component/h2Title';
 
 export default function UserPage() {
   const [Name, setName] = useState('');
-  const setUserName = (e) => {
-    setName(e.target.value);
-    localStorage.setItem('userName', Name);
-  };
-  const [Movies, setMovies] = useState([]);
+
+  const [BookMarks, setBookMarks] = useState([]);
+  const [Watched, setWatched] = useState([]);
   useEffect(() => {
     {
-      setMovies(JSON.parse(localStorage.getItem('BookMark')));
+      setBookMarks(JSON.parse(localStorage.getItem('BookMark')));
+      setWatched(JSON.parse(localStorage.getItem('WatchedMovies')));
     }
   }, [localStorage.getItem('BookMark')]);
   return (
@@ -30,16 +29,37 @@ export default function UserPage() {
               className='border-0 bg-transparent outline-none text-white text-7xl font-medium leading-tight'
             /> */}
           </div>
-          {Movies && (
+          {BookMarks && (
             <>
-              <H2 content='You saved' />
-              <div className='ml-32 flex overflow-x-auto'>
-                {Movies &&
-                  Movies.map((e) => {
-                    return <MoviePoster props={e} />;
-                  })}
+              <div className='py-9'>
+                <H2 content='You saved' />
+                <div className='ml-32 flex overflow-x-auto'>
+                  {BookMarks &&
+                    BookMarks.map((e) => {
+                      return <MoviePoster props={e} />;
+                    })}
 
-                {Movies.length == 1 && <MoviePoster props={Movies[0]} />}
+                  {BookMarks.length == 1 && (
+                    <MoviePoster props={BookMarks[0]} />
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+          {Watched && (
+            <>
+              <div className='py-9'>
+                <H2 content='You watched' />
+                <div className='ml-32 flex overflow-x-auto'>
+                  {Watched &&
+                    Watched.map((e) => {
+                      return <MoviePoster props={e} />;
+                    })}
+
+                  {BookMarks.length == 1 && (
+                    <MoviePoster props={BookMarks[0]} />
+                  )}
+                </div>
               </div>
             </>
           )}

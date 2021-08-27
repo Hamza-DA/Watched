@@ -1,28 +1,28 @@
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline';
 import { useEffect, useState } from 'react';
 export default function AddToWatched({ props }) {
-  const [Lists, setLists] = useState([]);
+  const [WatchedMovie, setWatchedMovie] = useState([]);
   const saveToLocalStorage = (movies) => {
-    localStorage.setItem('List', JSON.stringify(movies));
+    localStorage.setItem('WatchedMovies', JSON.stringify(movies));
   };
   const deleteFromLocalStorage = () => {
-    const newArray = Lists.filter((movie) => movie.id !== props.id);
-    localStorage.setItem('List', JSON.stringify(newArray));
-    setLists(newArray);
+    const newArray = WatchedMovie.filter((movie) => movie.id !== props.id);
+    localStorage.setItem('WatchedMovies', JSON.stringify(newArray));
+    setWatchedMovie(newArray);
   };
   const addToList = () => {
-    const newListList = [...(Lists || ''), props];
-    setLists(newListList);
-    saveToLocalStorage(newListList);
+    const newList = [...(WatchedMovie || ''), props];
+    setWatchedMovie(newList);
+    saveToLocalStorage(newList);
   };
   useEffect(() => {
-    const retrieveFromLS = JSON.parse(localStorage.getItem('List'));
-    setLists(retrieveFromLS);
+    const retrieveFromLS = JSON.parse(localStorage.getItem('WatchedMovies'));
+    setWatchedMovie(retrieveFromLS);
   }, []);
   return (
     <>
-      {(localStorage.getItem('List') &&
-        JSON.parse(localStorage.getItem('List')).find(
+      {(localStorage.getItem('WatchedMovies') &&
+        JSON.parse(localStorage.getItem('WatchedMovies')).find(
           (e) => e.id == props.id
         ) !== undefined) ||
       null ? (

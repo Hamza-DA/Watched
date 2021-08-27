@@ -38,14 +38,14 @@ function Single({ match }) {
         key={match.params.id}
         className='bg-primary w-screen sm:h-auto py-4 relative'
       >
-        <div className='flex flex-col sm:flex-row p-6 sm:p-0 sm:ml-32 items-center h-auto sm:h-full z-20 relative'>
+        <div className='flex flex-col sm:flex-row p-6 sm:p-0 sm:ml-32 items-start h-auto sm:h-full z-20 relative'>
           <div className='h-auto w-auto sm:w-2/6 flex-shrink-0 relative overflow-hidden'>
             <div className='relative'>
               <FamilyShield adult={Movie.adult} />
               <img
                 src={`https://image.tmdb.org/t/p/w500${Movie.poster_path}`}
                 alt={Movie.title}
-                className='object-cover w-full h-auto'
+                className='object-cover w-48 h-auto'
               />
             </div>
           </div>
