@@ -33,7 +33,7 @@ export default function UserPage() {
             <>
               <div className='py-9'>
                 <H2 content='You saved' />
-                <div className='ml-32 flex overflow-x-auto'>
+                <div className='pl-6 sm:pl-32 flex overflow-x-auto'>
                   {BookMarks &&
                     BookMarks.map((e) => {
                       return <MoviePoster props={e} />;
@@ -50,7 +50,7 @@ export default function UserPage() {
             <>
               <div className='py-9'>
                 <H2 content='You watched' />
-                <div className='ml-32 flex overflow-x-auto'>
+                <div className='pl-6 sm:pl-32 flex overflow-x-auto'>
                   {Watched &&
                     Watched.map((e) => {
                       return <MoviePoster props={e} />;

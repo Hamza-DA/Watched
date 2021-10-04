@@ -27,7 +27,7 @@ function Cast({ id }) {
       {/* {console.log('the id is ' + id)} */}
       <div className='bg-primary py-9'>
         <H2 content='Cast' />
-        <div className='flex mx-6 sm:ml-32 overflow-x-auto'>
+        <div className='flex mx-6 sm:mx-32 overflow-x-auto'>
           {CastArray
             ? CastArray.slice(0, 10).map((e) => {
                 return <CastCard key={e.name} props={e} />;

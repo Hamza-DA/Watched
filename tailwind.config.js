@@ -9,6 +9,11 @@ module.exports = {
       primary: '#1d1d1d',
       nav: '#1b191c',
     }),
+    extend: {
+      fontFamily: {
+        Display: ['"Bebas Neue"', 'Sans Serif'],
+      },
+    },
   },
   variants: {
     extend: { width: ['responsive', 'hover', 'focus'] },

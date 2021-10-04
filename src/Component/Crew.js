@@ -51,7 +51,7 @@ export default function Crew({ id }) {
   };
   return (
     <>
-      {Crew !== null && (
+      {Crew && (
         <div className='bg-primary py-9'>
           <H2 content='Crew' />
           <div className='grid grid-cols-3 auto-rows-auto gap-y-4 sm:gap-y-8 mx-6 sm:ml-32 overflow-x-auto'>

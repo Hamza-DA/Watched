@@ -24,7 +24,7 @@ export default function GenerateMoviesByGenre({ genre }) {
     <>
       <div className=' bg-primary py-9' key={genre}>
         <H2 content={movieGenre.genres.find((e) => e.id == genre).name} />
-        <div className='pl-6 sm:ml-32 flex items-end relative overflow-x-auto overflow-visible'>
+        <div className='pl-6 sm:pl-32 flex items-end relative overflow-x-auto overflow-visible'>
           {/* <PopularMovies type={'movie/popular'} title={genre} /> */}
           {Data && Data.map((e) => <MoviePoster props={e} />)}
         </div>

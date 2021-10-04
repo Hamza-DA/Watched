@@ -13,10 +13,9 @@ import api_key from '../Component/api_key.json';
 import AddToWatched from '../Component/AddToWatched';
 
 function Single({ match }) {
-  const [Match, setMatch] = useState(match.params.id);
   useEffect(() => {
-    setMatch(match.params.id);
     getMovie();
+    window.scrollTo(0, 0);
   }, [match.params.id]);
   const [Movie, setMovie] = useState({});
   const getMovie = () => {
@@ -36,28 +35,28 @@ function Single({ match }) {
     <>
       <section
         key={match.params.id}
-        className='bg-primary w-screen sm:h-auto py-4 relative'
+        className='bg-primary w-screen sm:h-auto  py-8 relative'
       >
-        <div className='flex flex-col sm:flex-row p-6 sm:p-0 sm:ml-32 items-start h-auto sm:h-full z-20 relative'>
-          <div className='h-auto w-auto sm:w-2/6 flex-shrink-0 relative overflow-hidden'>
+        <div className='flex flex-col sm:flex-row p-6 sm:p-0 sm:ml-32 items-start h-auto sm:h-full sm:items-center z-20 relative'>
+          <div className='h-auto w-auto flex-shrink-0 relative overflow-hidden'>
             <div className='relative'>
               <FamilyShield adult={Movie.adult} />
               <img
                 src={`https://image.tmdb.org/t/p/w500${Movie.poster_path}`}
                 alt={Movie.title}
-                className='object-cover w-48 h-auto'
+                className='object-cover w-96 h-auto'
               />
             </div>
           </div>
           <div className='flex-col sm:ml-12 w-full sm:w-3/5'>
-            <h1 className='text-white mt-4 sm:mb-6 text-5xl sm:text-7xl font-medium leading-tight w-full'>
+            <h1 className='text-white font-Display mt-4  text-5xl sm:text-7xl font-medium leading-none w-full'>
               {Movie.title}
             </h1>
             <div className='flex-col items-center mb-1'>
               <div className='flex flex-col items-start mb-3 mt-2'>
                 <GenreRender
                   genresProps={
-                    Movie.genres != undefined && Movie.genres.map((e) => e.id)
+                    Movie.genres !== undefined && Movie.genres.map((e) => e.id)
                   }
                 />
                 <div className='flex mt-1'>

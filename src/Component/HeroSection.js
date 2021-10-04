@@ -43,7 +43,7 @@ function HeroSection() {
             </p>
           </div>
         </div>
-        <div className='absolute h-full w-screen bg-gradient-to-r from-black to-transparent'></div>
+        <div className='absolute h-full w-screen bg-opacity-60 bg-black'></div>
       </section>
     </>
   );
