@@ -10,12 +10,16 @@ function App() {
   return (
     <>
       <Navbar />
-      <Switch>
-        <Route path='/' exact component={HomeComponent}></Route>
-        <Route path='/search' component={SearchPage}></Route>
-        <Route path='/dashboard' component={UserPage}></Route>
-        <Route path='/:id' exact component={Single}></Route>
-      </Switch>
+      <main className='bg-primary'>
+        <div className='2xl:container 2xl:mx-auto'>
+          <Switch>
+            <Route path='/' exact component={HomeComponent}></Route>
+            <Route path='/search' component={SearchPage}></Route>
+            <Route path='/dashboard' component={UserPage}></Route>
+            <Route path='/:id' exact component={Single}></Route>
+          </Switch>
+        </div>
+      </main>
       <Footer />
     </>
   );

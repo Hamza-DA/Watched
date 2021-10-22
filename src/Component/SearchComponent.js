@@ -1,56 +1,72 @@
 import { SearchIcon, XIcon } from '@heroicons/react/outline';
 import axios from 'axios';
 import MoviePoster from './MoviePoster';
-import api_key from './api_key.json';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 function SearchComponent() {
   const [Search, setSearch] = useState([]);
   const [SearchTerm, setSearchTerm] = useState('');
+  useEffect(() => {
+    if (SearchTerm !== '') {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_WATCHED_API_KEY}&language=en-US&query=${SearchTerm}&page=1&include_adult=false`
+        )
+        .then((res) => setSearch(res.data.results))
+        .catch((err) => console.log(err));
+    }
+    // console.log(SearchTerm);
+  }, [SearchTerm, Search]);
   const searchQuerry = (e) => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${api_key.key}&language=en-US&query=${e}&page=1&include_adult=false`
-      )
-      .then((res) => setSearch(res.data.results))
-      .catch((err) => console.log(err));
+    if (e !== undefined) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_WATCHED_API_KEY}&language=en-US&query=${e}&page=1&include_adult=false`
+        )
+        .then((res) => setSearch(res.data.results))
+        .catch((err) => console.log(err));
+    }
   };
   return (
     <>
-      <label
-        htmlFor='movie_search'
-        className='bg-primary flex items-center px-4 w-1/2'
-      >
-        {SearchTerm === '' ? (
-          <SearchIcon className='h-6 w-6 mr-2 text-gray-400' />
-        ) : (
-          <button
-            className='h-6 w-6 mr-2 bg-transparent border-none '
-            onClick={() => setSearchTerm('')}
-          >
-            <XIcon className='h-6 w-6 mr-2 text-gray-400' />
-          </button>
-        )}
-        <input
-          type='text'
-          name='movie_search'
-          className='bg-transparent border-none p-2 text-white font-medium w-full'
-          placeholder='Search for TV series or Movies'
-          value={SearchTerm}
-          onInput={({ target }) => {
-            setSearchTerm(target.value);
-            target.value !== '' && searchQuerry(target.value);
+      <label className='flex items-center text-white bg-gray-700 bg-opacity-40'>
+        <button
+          onClick={() => {
+            SearchTerm !== '' && setSearchTerm('');
           }}
+          className='p-1.5 mx-2'
+        >
+          {SearchTerm === '' ? (
+            <SearchIcon className='w-7 h-7' />
+          ) : (
+            <XIcon className='w-7 h-7' />
+          )}
+        </button>
+        <input
+          onChange={({ target }) => {
+            setSearchTerm(target.value);
+          }}
+          value={SearchTerm}
+          type='text'
+          className='w-full bg-transparent border-none '
         />
       </label>
       <div
         className={`${
-          SearchTerm === '' ? 'hidden' : 'flex'
-        } absolute top-14 left-0 w-screen pl-32  overflow-auto flex items-end bg-black bg-opacity-90 shadow-2xl`}
+          SearchTerm === '' ? 'hidden' : ''
+        } sm:px-12 lg:px-32 px-6 overflow-x-auto flex absolute top-14 left-0 bg-black bg-opacity-90 w-screen`}
       >
-        {console.log(SearchTerm === '')}
-        {Search.map((e) => (
-          <MoviePoster props={e} w_h='sm:h-80 sm:w-48' />
-        ))}
+        {Search !== undefined &&
+          Search.map((e) => (
+            <div
+              onClick={() => {
+                SearchTerm !== '' && setSearchTerm('');
+              }}
+              key={e.id}
+            >
+              <MoviePoster w_h='sm:h-auto sm:w-48 w-48 h-auto' props={e} />
+            </div>
+          ))}
       </div>
     </>
   );

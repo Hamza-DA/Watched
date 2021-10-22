@@ -2,20 +2,11 @@ import user from '../resources/user.png';
 function CastCard({ props }) {
   return (
     <>
-      {/* {(
-        <div className='animate-pulse mr-3 h-72 w-52 flex-shrink-0 relative'>
-          <div className='w-full h-full bg-gray-500'></div>
-          <div className='absolute bottom-0 flex-col p-5 overscroll-x-hidden w-full '>
-            <div className='w-full h-6 bg-gray-400'></div>
-            <div className='w-5/6 mt-2 h-4 bg-gray-400'></div>
-          </div>
-        </div>
-      ) && ( */}
       <div className='mr-3 h-72 w-52 flex-shrink-0 relative'>
         <img
           src={
             props.profile_path
-              ? `https://image.tmdb.org/t/p/original${props.profile_path}`
+              ? `https://image.tmdb.org/t/p/w500${props.profile_path}`
               : user
           }
           alt={props.name}

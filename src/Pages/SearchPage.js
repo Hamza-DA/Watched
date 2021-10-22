@@ -3,14 +3,13 @@ import axios from 'axios';
 import { useState } from 'react';
 import MoviePoster from '../Component/MoviePoster';
 import movieGenres from '../Component/prototypeJSON/movieGenres.json';
-import api_key from '../Component/api_key.json';
 
 function SearchPage() {
   const [Search, setSearch] = useState([]);
   const searchQuerry = (e) => {
     axios
       .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${api_key.key}&language=en-US&query=${e}&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_WATCHED_API_KEY}&language=en-US&query=${e}&page=1&include_adult=false`
       )
       .then((res) => setSearch(res.data))
       .catch((err) => console.log(err));

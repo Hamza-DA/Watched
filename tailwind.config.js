@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         Display: ['"Bebas Neue"', 'Sans Serif'],
       },
+      height: {
+        180: '33rem',
+      },
     },
   },
   variants: {

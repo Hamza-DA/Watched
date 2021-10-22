@@ -17,7 +17,7 @@ function RatingComponent({ ratingProps }) {
   };
   return (
     <>
-      <div className='text-green-400 text-lg font-bold mr-3 flex items-center'>
+      <div className='text-green-400 text-lg font-bold font-Display mr-3 flex items-center'>
         <span className='flex items-center -mt-0.5'>{renderStars()}</span>
         <span className='ml-1'>
           {ratingProps && ratingProps.toFixed(1)}

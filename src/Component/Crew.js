@@ -2,8 +2,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CastCard from './CastCard';
 import H2 from './h2Title';
-import user from '../resources/user.png';
-import api_key from './api_key.json';
 
 export default function Crew({ id }) {
   useEffect(() => {
@@ -13,48 +11,35 @@ export default function Crew({ id }) {
   const getCrew = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key.key}&language=en-US`
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_WATCHED_API_KEY}&language=en-US`
       )
       .then((res) => {
-        setCrew(res.data.cast);
+        setCrew(
+          res.data.cast.filter((a) => a.known_for_department !== 'Acting')
+        );
       })
       .catch((err) => {
         console.log(err);
       });
   };
   const crewFiltering = () => {
-    return Crew.filter((a) => a.known_for_department !== 'Acting').map((e) => {
+    return Crew.map((e) => {
       return (
         <>
-          <div key={e.name} className='flex items-center flex-shrink-0'>
-            <img
-              className='w-16 h-16 object-cover rounded-full mr-4 hidden sm:block'
-              src={
-                e.profile_path == undefined || null
-                  ? user
-                  : `https://image.tmdb.org/t/p/w500${e.profile_path}`
-              }
-              alt={e.name}
-            />
-            <div className='flex flex-col'>
-              <h3 className='text-lg sm:text-xl font-medium text-white w-full mb-1'>
-                {e.original_name}
-              </h3>
-              <h4 className='text-sm font-normal text-gray-300 w-full mb-1'>
-                {e.character}
-              </h4>
-            </div>
-          </div>
+          <CastCard props={e} />
         </>
       );
     });
   };
   return (
     <>
-      {Crew && (
+      {console.log(Crew)}
+      {Crew.length !== 0 && (
         <div className='bg-primary py-9'>
-          <H2 content='Crew' />
-          <div className='grid grid-cols-3 auto-rows-auto gap-y-4 sm:gap-y-8 mx-6 sm:ml-32 overflow-x-auto'>
+          <div className='sm:px-12 lg:px-32 px-6'>
+            <H2 content='Crew' />
+          </div>
+          <div className='sm:px-12 lg:px-32 px-6 flex overflow-auto'>
             {crewFiltering()}
           </div>
         </div>

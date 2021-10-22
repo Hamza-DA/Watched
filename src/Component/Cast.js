@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import CastCard from './CastCard';
 import H2 from './h2Title';
 import axios from 'axios';
-import api_key from './api_key.json';
+
 function Cast({ id }) {
   useEffect(() => {
     if (id !== undefined) {
@@ -15,7 +15,7 @@ function Cast({ id }) {
   const getCasts = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key.key}&language=en-US`
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_WATCHED_API_KEY}&language=en-US`
       )
       .then((res) => {
         setCastArray(res.data.cast);
@@ -24,10 +24,11 @@ function Cast({ id }) {
   };
   return (
     <>
-      {/* {console.log('the id is ' + id)} */}
       <div className='bg-primary py-9'>
-        <H2 content='Cast' />
-        <div className='flex mx-6 sm:mx-32 overflow-x-auto'>
+        <div className='sm:px-12 lg:px-32 px-6'>
+          <H2 content='Cast' />
+        </div>
+        <div className='flex sm:px-12 lg:px-32 px-6 overflow-x-auto'>
           {CastArray
             ? CastArray.slice(0, 10).map((e) => {
                 return <CastCard key={e.name} props={e} />;
@@ -38,37 +39,4 @@ function Cast({ id }) {
     </>
   );
 }
-// function Cast({ id }) {
-//   useEffect(() => {
-//     getCast();
-//   }, []);
-//   const [CastArray, setCastArray] = useState({});
-//   const getCast = async () => {
-//     const url = await fetch(
-//       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=1925562cef1131735cd1028a38b06f84&language=en-US`
-//     );
-//     const response = await url.json();
-//     setCastArray(response);
-//   };
-//   const handleCast = () => {
-//     return (
-//       <>
-//         {CastArray.cast
-//           ? CastArray.cast.slice(0, 10).map((e) => {
-//               return <CastCard key={e.name} props={e} />;
-//             })
-//           : console.log('err')}
-//       </>
-//     );
-//   };
-//   return (
-//     <>
-//       <div className='bg-primary py-9'>
-//         <H2 content='Cast' />
-//         <div className='flex ml-32 overflow-x-auto'>{handleCast()}</div>
-//       </div>
-//     </>
-//   );
-// }
-
 export default Cast;

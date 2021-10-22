@@ -1,37 +1,43 @@
 import RatingComponent from './RatingComponent';
-import GenreRender from './Genre';
 import { Link } from 'react-router-dom';
-import user from '../resources/user.png';
+import MoviePosterSkeleton from './Skeleton/MoviePosterSkeleton';
+import { useEffect, useState } from 'react';
 
 function MoviePoster({ props, w_h }) {
+  const [Props, setProps] = useState('');
+  useEffect(() => {
+    setProps(props);
+  }, []);
   return (
     <>
-      {props ? (
-        <Link key={props.id || props.title} to={`/${props.id}`}>
+      {Props !== undefined ? (
+        <Link key={Props.id || Props.title} to={`/${Props.id}`}>
           <div
             className={`group mr-3 ${
               w_h ? w_h : 'sm:h-auto sm:w-96 w-60 h-auto'
             } flex-shrink-0 relative border-white border-4 border-opacity-0 transition-all duration-75 hover:border-opacity-100`}
           >
             <img
-              src={`https://image.tmdb.org/t/p/w500${props.poster_path}`}
-              alt={props.title}
+              src={`https://image.tmdb.org/t/p/w500${Props.poster_path}`}
+              alt={Props.title}
               className='object-cover w-full h-full'
             />
-            <div className='absolute bottom-0 flex-col p-5 overscroll-x-hidden w-full bg-gradient-to-t from-black to-transparent'>
-              <h2 className='text-xl font-medium text-white w-5/6 mb-1'>
-                {props.title || props.original_name ? (
-                  props.title || props.original_name
-                ) : (
-                  <h1>loading ...</h1>
-                )}
+            <div className='absolute bottom-0 flex-col p-5 overscroll-x-hidden w-full bg-black bg-opacity-60'>
+              <h2 className='font-Display text-left text-2xl tracking-wide font-medium text-white w-5/6 mb-1'>
+                {Props.title || Props.original_name}
               </h2>
-              <RatingComponent ratingProps={props.vote_average} />
+              <RatingComponent ratingProps={Props.vote_average} />
             </div>
           </div>
         </Link>
       ) : (
-        <h1>Loading ...</h1>
+        <div
+          className={`group mr-3 ${
+            w_h ? w_h : 'sm:h-auto sm:w-96 w-60 h-auto'
+          } flex-shrink-0 relative border-white border-4 border-opacity-0 transition-all duration-75 hover:border-opacity-100`}
+        >
+          <MoviePosterSkeleton />
+        </div>
       )}
     </>
   );

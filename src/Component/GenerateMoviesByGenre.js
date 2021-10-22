@@ -1,6 +1,4 @@
-import PopularMovies from './PopularForEachType';
 import axios from 'axios';
-import api_key from './api_key.json';
 import { useEffect, useState } from 'react';
 import MoviePoster from './MoviePoster';
 import H2 from './h2Title';
@@ -13,7 +11,7 @@ export default function GenerateMoviesByGenre({ genre }) {
   const fetchData = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${api_key.key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genre}&with_watch_monetization_types=flatrate`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_WATCHED_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genre}&with_watch_monetization_types=flatrate`
       )
       .then((res) => {
         setData(res.data.results);
@@ -22,10 +20,11 @@ export default function GenerateMoviesByGenre({ genre }) {
   };
   return (
     <>
-      <div className=' bg-primary py-9' key={genre}>
-        <H2 content={movieGenre.genres.find((e) => e.id == genre).name} />
-        <div className='pl-6 sm:pl-32 flex items-end relative overflow-x-auto overflow-visible'>
-          {/* <PopularMovies type={'movie/popular'} title={genre} /> */}
+      <div className='bg-primary pb-8' key={genre}>
+        <div className='sm:px-12 lg:px-32 px-6'>
+          <H2 content={movieGenre.genres.find((e) => e.id === genre).name} />
+        </div>
+        <div className='flex items-end relative px-6 sm:px-12 lg:px-32 overflow-auto'>
           {Data && Data.map((e) => <MoviePoster props={e} />)}
         </div>
       </div>

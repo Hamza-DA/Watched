@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import api_key from './prototypeJSON/api_key.json';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
-import api_key from './api_key.json';
 
 function Login(props) {
   const history = useHistory();
@@ -20,7 +17,7 @@ function Login(props) {
   const FetchImages = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key.key}`
+        `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_WATCHED_API_KEY}`
       )
       .then((res) => {
         setTrend(res.data.results);
@@ -33,7 +30,7 @@ function Login(props) {
   const getRequestGuestSession = () => {
     axios
       .get(
-        `https://api.themoviedb.org/3/authentication/guest_session/new?api_key=${api_key.key}`
+        `https://api.themoviedb.org/3/authentication/guest_session/new?api_key=${process.env.REACT_APP_WATCHED_API_KEY}`
       )
       .then((res) => {
         console.log(res.data);
