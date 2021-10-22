@@ -21,9 +21,9 @@ I made this project because I love making react projects, and also to show my sk
 - [x] Movie simple age-based system that tell if a movie is suitable for children or not, will change later to a more specefic one(officially supported movie certifications on TMDB)
 - [x] Add "add to favourites","add to wishlist" feature, using localStorage.
 - [x] "Select movies genre you like"
-- [x] Generating a graph based on user most movies genres he add to his favourites or he already selected.
+- [x] Search for a film.
 
-![Home Page](src/resources/HomePage.jpg)
-![Search Page](src/resources/search.jpg)
-![Search Page](src/resources/Film.jpg)
+![Home Page](src/resources/home.png)
+![Search](src/resources/search.png)
+![Movie](src/resources/movie.png)
 _Component, scales, colors might be a bit different on the final product_
